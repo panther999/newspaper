@@ -1,7 +1,6 @@
 package build;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import implementation.BM;
@@ -13,8 +12,13 @@ import implementation.TOI;
 
 
 public class NewspaperFactory {
-
-
+	
+	
+	/*
+	 * 
+	 * Factory method to create newspaper objects based on the input 
+	 * 
+	 */
 	public Newspaper getNewsPaper(String nameOfnewspaper) {
 		
 		try {
@@ -30,12 +34,12 @@ public class NewspaperFactory {
 			case "BM" :
 				return new BM();
 			default :
-				throw new NewspaperNotDefinedException(nameOfnewspaper + ": Newspaper name was not defined");
+				throw new NewspaperNotDefinedException(nameOfnewspaper + ": Newspaper name is not defined -- Possible wrong inputs");
 			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
 			System.out.println("SYSTEM IS CLOSING DOWN ---");
 			System.exit(0);
 		}

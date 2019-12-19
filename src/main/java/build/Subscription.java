@@ -34,7 +34,6 @@ public class Subscription {
 	 * 
 	 */
 	// 
-	
 	private Double getPriceOfPapers(List<Newspaper> papers, String month) {
 		//System.out.print("Price of newspapers subscription in month " + month + " :");
 		return papers.parallelStream()
@@ -42,6 +41,9 @@ public class Subscription {
 				.mapToDouble(d -> d)
 				.sum();
 	}
+	
+	
+	
 	
 	/*
 	 * Subscription is created and user asking for price
@@ -51,6 +53,9 @@ public class Subscription {
 		return getPriceOfPapers(this.papers);		
 	}
 	
+	
+	
+	
 	/*
 	 * Subscription is created and user asking for price in particular month
 	 * 
@@ -59,6 +64,12 @@ public class Subscription {
 		return getPriceOfPapers(this.papers,month);		
 	}
 	
+	
+
+	/*
+	 * Subscription is created
+	 * 
+	 */
 	public Subscription(String subscribedNewsPaperInp){
 		// split input with comma and pass it to factory method as list to get list of objects of subscribed newspapers
 		this.papers = factory.getAllNewsPapers(Arrays.asList(subscribedNewsPaperInp.split(",")));
