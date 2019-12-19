@@ -39,7 +39,7 @@ public class Main {
 			}
 			
 			
-			System.out.println("Price of subscription " + price);
+			System.out.println("Price of subscription :" +  price);
 			
 		}
 		catch(Exception e) {
