@@ -27,16 +27,22 @@ public abstract class Newspaper {
 		return this.priceMap.get(day);
 	}
 	
+	
+	/*
+	 * We want to know price of newspaper based on today's date
+	 */
 	public double getPriceOfthisMonth() {
 		Double totalPrice = 0.00D;
 		try {
+			//find today's date details
 			LocalDate date = LocalDate.now();
 			int totalDays = date.getMonth().length(date.isLeapYear());
 			int todaysDay = date.getDayOfMonth();
 						 
 			
 			
-			for(int i=todaysDay; i<= totalDays-1; i++) {
+			for(int dayCtr=todaysDay; dayCtr<= totalDays-1; dayCtr++) {
+				//loop through each day
 				LocalDate tmp = date.plusDays(1);
 				totalPrice = totalPrice + priceMap.get(tmp.getDayOfWeek().getValue());
 			}
@@ -47,6 +53,10 @@ public abstract class Newspaper {
 		return totalPrice;
 	}
 	
+	
+	/*
+	 * We want to know price of newspapers of a specific month
+	 */
 	public double getPriceOfSpecificMonth(String monthName) {
 		Double totalPrice = 0.00D;
 		try {

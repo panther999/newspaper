@@ -1,32 +1,51 @@
 package main;
 
-import java.util.Arrays;
-import java.util.List;
-
-import build.Calculator;
-import build.Newspaper;
-import build.NewspaperFactory;
+import build.Subscription;
 
 public class Main {
+		
 
 	public static void main(String[] args) {
-		NewspaperFactory factory = new NewspaperFactory();
+		Double price=0.00D;
 		
+		//program input 
+		try {
+			if(args.length > 0 ) {
+				String MonthToCheck = null;
+				
+					
+					//create a new subscription first
+					Subscription subscription = new Subscription(args[0].toUpperCase());
+
+					
+					//Additional feature to check subscription cost in a particular month
+					if (args.length == 2)
+						MonthToCheck= args[1].toUpperCase(); 
+					
+					
+					
+					if(MonthToCheck == null) {
+						//Give price of subscribed newspapers in this month - assuming user is going to start subscription from today's (date)
+						price = subscription.getPriceOfPapers(); 
+					}
+					else {
+						price = subscription.getPriceOfPapers(MonthToCheck);
+					}
+				
+			}
+			else {
+				System.out.println("Argument size should be 1. Please checked passed parameters");
+				System.exit(0);
+			}
+			
+			
+			System.out.println("Price of subscription " + price);
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		
-		//more than 1
-		String input="HT,TOI";
-		List<Newspaper> papers = factory.getAllNewsPapers(Arrays.asList(input.split(",")));
-		System.out.println("Price of papers for this month :" + Calculator.getPriceOfPapers(papers));
-		System.out.println("Price of papers for december month :" + Calculator.getPriceOfPapers(papers,"december"));
-		System.out.println("-----------------------------");
-		
-		
-		//one input
-		input="HT";
-		List<Newspaper> papers2 = factory.getAllNewsPapers(Arrays.asList(input.split(",")));
-		System.out.println("Price of papers for this month :" + Calculator.getPriceOfPapers(papers2));
-		System.out.println("Price of papers for december month :" + Calculator.getPriceOfPapers(papers2,"december"));
-		System.out.println("-----------------------------");
 	}
 	
 	

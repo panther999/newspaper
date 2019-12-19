@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import implementation.BM;
+import implementation.ET;
 import implementation.HT;
+import implementation.Hindu;
 import implementation.TOI;
 
 
@@ -20,6 +23,12 @@ public class NewspaperFactory {
 				return new HT(); 
 			case "TOI" :
 				return new TOI();
+			case "Hindu" :
+				return new Hindu();
+			case "ET" :
+				return new ET();
+			case "BM" :
+				return new BM();
 			default :
 				throw new NewspaperNotDefinedException(nameOfnewspaper + ": Newspaper name was not defined");
 			}
